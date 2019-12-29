@@ -5,7 +5,7 @@ node {
     checkout scm
     def dockerImage
     stage('start') {
-        sh 'echo start8'
+        sh "echo ${QUAY_PASS}"
     }
     
     stage('save-env') {
@@ -27,7 +27,7 @@ node {
     stage('Deploy Image') {
         steps {
           sh "docker login -u=albertvo15 -p=${QUAY_PASS} quay.io"
-          sh "docker push quay.io/albertvo15/test:v4.0.0"
+//          sh "docker push quay.io/albertvo15/test:v4.0.0"
 //        docker.withRegistry( '', 'dockerhub' ) {
 //        docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
 //          dockerImage.push('albertvo15/test:v4.0.0')
