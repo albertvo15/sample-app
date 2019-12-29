@@ -6,7 +6,7 @@ node {
     checkout scm
     def dockerImage
     stage('start') {
-        echo "${QUAY_PASS}"
+        echo "${env.QUAY_PASS}"
     }
     
     stage('save-env') {
