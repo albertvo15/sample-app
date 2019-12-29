@@ -1,4 +1,7 @@
 node {
+    environment {
+        QUAY_PASS = credentials('albertvo15')
+    }
     checkout scm
     def dockerImage
     stage('start') {
@@ -11,19 +14,23 @@ node {
 
     stage('build-image') {
 //        sh 'docker build -t $IMAGE_REPO:$IMAGE_TAG .'
-        dockerImage = docker.build( "albertvo/test:v4.0.0")
+//        dockerImage = docker.build( "albertvo/test:v4.0.0")
+        sh 'docker build -t albertvo/test:v4.0.0 .'
     }
 
     stage('tag-image') {
-        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
+        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
+//        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
     }
     stage('Deploy Image') {
-        docker.withRegistry( '', 'dockerhub' ) {
+        sh "docker login -u=albertvo15 -p=${QUAY_PASS} quay.io"
+        sh "docker push quay.io/albertvo15/test:v4.0.0"
+//        docker.withRegistry( '', 'dockerhub' ) {
 //        docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
 //          dockerImage.push('albertvo15/test:v4.0.0')
-          dockerImage.push()
+//          dockerImage.push()
         }
     }   
     
