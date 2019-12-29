@@ -22,7 +22,7 @@ node {
         docker.withRegistry( '', 'albertvo15' ) {
           dockerImage.push()
         }
-    
+    }   
     
     archiveArtifacts 'properties'
 }
