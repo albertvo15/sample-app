@@ -1,11 +1,12 @@
 node {
     environment {
-        QUAY_PASS = credentials('albertvo15')
+//        QUAY_PASS = credentials('albertvo15')
+        QUAY_PASS = "test"
     }
     checkout scm
     def dockerImage
     stage('start') {
-        sh "echo $env.QUAY_PASS"
+        sh "echo ${QUAY_PASS}"
     }
     
     stage('save-env') {
