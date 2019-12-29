@@ -17,7 +17,7 @@ node {
     stage('tag-image') {
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
-        sh 'docker tag 'albertvo15/test:v4.0.0 albertvo15/test:v4.0.0'
+        sh 'docker tag albertvo15/test:v4.0.0 albertvo15/test:v4.0.0'
     }
     stage('Deploy Image') {
 //        docker.withRegistry( '', 'dockerhub' ) {
