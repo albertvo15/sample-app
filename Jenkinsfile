@@ -11,12 +11,13 @@ node {
 
     stage('build-image') {
 //        sh 'docker build -t $IMAGE_REPO:$IMAGE_TAG .'
-        dockerImage = docker.build( "albertvo/test:4.0.0")
+        dockerImage = docker.build( "albertvo15/test:4.0.0")
     }
 
     stage('tag-image') {
-        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
-//        sh 'docker tag "albertvo/test:v4.0.0 albertvo/test:${env.BUILD_ID}"'
+//        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
+//        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
+        sh 'docker tag "albertvo15/test:v4.0.0 albertvo15/test:v4.0.0"'
     }
     stage('Deploy Image') {
 //        docker.withRegistry( '', 'dockerhub' ) {
