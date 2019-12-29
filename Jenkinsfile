@@ -19,7 +19,8 @@ node {
 //        sh 'docker tag "albertvo/test:v4.0.0 albertvo/test:${env.BUILD_ID}"'
     }
     stage('Deploy Image') {
-        docker.withRegistry( '', 'dockerhub' ) {
+//        docker.withRegistry( '', 'dockerhub' ) {
+        docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
           dockerImage.push()
         }
     }   
