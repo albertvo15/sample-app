@@ -1,5 +1,9 @@
 node {
     checkout scm
+    def dockerImage
+    stage('start') {
+        sh 'echo start8'
+    }
     
     stage('save-env') {
         sh 'env > properties'
