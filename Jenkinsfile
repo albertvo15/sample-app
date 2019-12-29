@@ -18,11 +18,11 @@ node {
         sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
 //        sh 'docker tag "albertvo/test:v4.0.0 albertvo/test:${env.BUILD_ID}"'
     }
-    stage('Deploy Image') {
-        docker.withRegistry( '', 'albertvo15' ) {
-          dockerImage.push()
-        }
-    }   
+//    stage('Deploy Image') {
+//        docker.withRegistry( '', 'albertvo15' ) {
+//          dockerImage.push()
+//        }
+//    }   
     
     archiveArtifacts 'properties'
 }
