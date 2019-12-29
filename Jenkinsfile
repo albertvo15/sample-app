@@ -25,8 +25,9 @@ node {
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
     }
     stage('Deploy Image') {
-        sh "docker login -u=albertvo15 -p=${QUAY_PASS} quay.io"
-        sh "docker push quay.io/albertvo15/test:v4.0.0"
+        steps {
+          sh "docker login -u=albertvo15 -p=${QUAY_PASS} quay.io"
+          sh "docker push quay.io/albertvo15/test:v4.0.0"
 //        docker.withRegistry( '', 'dockerhub' ) {
 //        docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
 //          dockerImage.push('albertvo15/test:v4.0.0')
