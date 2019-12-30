@@ -6,7 +6,7 @@ pipeline {
     checkout scm
     def dockerImage
     stage('start') {
-        echo "${env.QUAY_PASS}"
+        echo "${env.QUAY_PASS} 2"
     }
     
     stage('save-env') {
