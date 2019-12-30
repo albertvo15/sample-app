@@ -33,7 +33,8 @@ node {
 //        docker.withRegistry( '', 'dockerhub' ) {
           docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
 //          dockerImage.push('albertvo15/test:v4.0.0')
-          dockerImage.push()
+            dockerImage.push()
+          }
         }
     }   
     
