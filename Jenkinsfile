@@ -21,7 +21,7 @@ node {
 
     stage('tag-image') {
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
-        sh 'docker tag albertvo15/test:v4.0.0 albertvo15/test:v4.0.0'
+        sh 'docker tag albertvo15/test:v4.0.0 quay.io/albertvo15/test:v4.0.0'
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
     }
@@ -32,7 +32,7 @@ node {
 //          sh "docker push quay.io/albertvo15/test:v4.0.0"
 //        docker.withRegistry( '', 'dockerhub' ) {
           docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
-            dockerImage.push('albertvo15/test:v4.0.0')
+            dockerImage.push("quay.io/albertvo15/test:v4.0.0")
 //            dockerImage.push()
           }
         }
