@@ -32,8 +32,8 @@ node {
 //          sh "docker push quay.io/albertvo15/test:v4.0.0"
 //        docker.withRegistry( '', 'dockerhub' ) {
           docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
-//          dockerImage.push('albertvo15/test:v4.0.0')
-            dockerImage.push()
+            dockerImage.push('albertvo15/test:v4.0.0')
+//            dockerImage.push()
           }
         }
     }   
