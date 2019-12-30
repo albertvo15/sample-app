@@ -26,20 +26,14 @@ node {
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
     }
     stage('Deploy Image') {
-        steps {
         echo "${env.QUAY_PASS}"
-//          sh "docker login -u=albertvo15 -p=${env.QUAY_PASS} quay.io"
-//          sh "docker push quay.io/albertvo15/test:v4.0.0"
-//        docker.withRegistry( '', 'dockerhub' ) {
           docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
-//            dockerImage.push("quay.io/albertvo15/test:v4.0.0")
             try {
               dockerImage.push()
             } finally {
               echo "PUSH Failed"
             }
           }
-        }
     }   
     
     archiveArtifacts 'properties'
