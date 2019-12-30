@@ -15,13 +15,13 @@ node {
 
     stage('build-image') {
 //        sh 'docker build -t $IMAGE_REPO:$IMAGE_TAG .'
-        dockerImage = docker.build( "albertvo15/test:v4.0.0")
+        dockerImage = docker.build( "quay.io/albertvo15/test:v4.0.0")
 //        sh 'docker build -t albertvo/test:v4.0.0 .'
     }
 
     stage('tag-image') {
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
-        sh 'docker tag albertvo15/test:v4.0.0 quay.io/albertvo15/test:v4.0.0'
+        sh 'docker tag quay.io/albertvo15/test:v4.0.0 quay.io/albertvo15/test:v4.0.0'
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo/test:v4.0.0'
 //        sh 'docker tag albertvo/test:v4.0.0 albertvo15/test:v4.0.0'
     }
@@ -32,8 +32,12 @@ node {
 //          sh "docker push quay.io/albertvo15/test:v4.0.0"
 //        docker.withRegistry( '', 'dockerhub' ) {
           docker.withRegistry( 'https://quay.io', 'albertvo15' ) {
-            dockerImage.push("quay.io/albertvo15/test:v4.0.0")
-//            dockerImage.push()
+//            dockerImage.push("quay.io/albertvo15/test:v4.0.0")
+            try {
+              dockerImage.push()
+            } finally {
+              echo "PUSH Failed"
+            }
           }
         }
     }   
