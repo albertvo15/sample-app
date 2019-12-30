@@ -1,4 +1,4 @@
-node {
+pipeline {
     environment {
 //        QUAY_PASS = credentials('albertvo15')
         QUAY_PASS = "test"
